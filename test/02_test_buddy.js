@@ -53,7 +53,7 @@ test('too soon or too late', function () {
   );
 
   
-  scheduler.startScheduler(function () {
+  var res = scheduler.startScheduler(function () {
     return xs.map(function (x) { return x; });
   } ,{
     created: __,     
