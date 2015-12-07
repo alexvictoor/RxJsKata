@@ -43,7 +43,6 @@ test('meet your new best friend', function () {
 });
 
 test('too soon or too late', function () {
-  return;
   var scheduler = new Rx.TestScheduler();
 
   // Create hot observable which will start firing
@@ -53,7 +52,7 @@ test('too soon or too late', function () {
   );
 
   // Note we'll start at 200 for subscribe, hence missing the 150 mark
-  scheduler.startScheduler(function () {
+  var res = scheduler.startScheduler(function () {
     return xs.map(function (x) { return x; });
   }/* ,{
     created: 100,     
