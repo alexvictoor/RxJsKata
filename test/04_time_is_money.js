@@ -15,10 +15,7 @@ var onNext = Rx.ReactiveTest.onNext,
 
 
 var createMidPrices = function(source) {
-  return source.map(
-    function(p) {
-      return (p.bid + p.ask)/2;
-    });
+  return __;
 }
 
 
@@ -41,11 +38,7 @@ test('should get mid prices', function() {
 });
 
 var createLastDaysAvgMidPrices = function(source, nbDays, scheduler) {
-  return createMidPrices(source)
-    .windowWithCount(nbDays, 1)
-    .flatMap(function(w) {
-      return w.average();
-    });
+  return __;
 }
 
 test('should get last X  mid avg prices', function() {

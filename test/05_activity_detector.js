@@ -16,43 +16,7 @@ var onNext = Rx.ReactiveTest.onNext,
 
 var createActivityStream = function(activity, scheduler) {
 
-  var activityStream = activity.map(
-    function(x) {
-        return 1;
-    }
-  ); //.tap(function (x) { console.log("start activity " + x) });
-
-  var endActivityStream = activity.delay(5000, scheduler).map(
-    function(x) {
-        return -1;
-    }
-  );  //.tap(function (x) { console.log("end activity " + x) });
-
-  var stream = activityStream
-    .merge(endActivityStream)
-    //.tap(function (x) { console.log("before sum " + x) })
-    .scan(function(x, y) { return x+y; }, 0)
-    //.tap(function (x) { console.log("sum change") })
-    .map(
-      function(x) {
-        if (x > 0)  {
-          return "green";
-        }
-        return "red";
-      }
-    )   //.tap(function (x) { console.log("new color " + x) })
-    .distinctUntilChanged().publish().refCount();
-
-
-  var s = new ReplaySubject(1);
-  Observable
-    .just("red")
-    .delay(5000, scheduler)
-    .takeUntil(stream).merge(stream)
-    //.tap(function (x) { console.log("final color " + x) })
-    .subscribe(function(x) { s.onNext(x); });
-  return s;  
-
+  return __;
 }
 
 

@@ -23,25 +23,7 @@ var onNext = Rx.ReactiveTest.onNext,
 
 
 var createExecStream = function(priceSource, execReqSource, scheduler) {
-  return execReqSource.groupJoin(
-    priceSource,
-    function() { return Observable.just("") },
-    function() { return priceSource.skip(2) },
-    function(execReq, prices) { 
-      //console.log("exec req " + JSON.stringify(execReq));
-      //console.log("prices " + (typeof prices));
-      return prices.take(3).filter(
-        function(price) {
-          //console.log("price " + JSON.stringify(price));
-          var targetPrice;
-          if (execReq.way === "BUY") {
-            targetPrice = price.ask;
-          } else {
-            targetPrice = price.bid;
-          }
-          return execReq.price == targetPrice;
-        }).map(function(match) { return "trade done"}).concat(Observable.just("reject")).take(1);
-    }).mergeAll();
+  return __;
 }
 
 
