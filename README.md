@@ -1,6 +1,6 @@
 # RxJsKata
 
-The aim of this kata is to have a grasp on concepts and tools that are mandatory woking on a real life RX application.  
+The aim of this kata is to have a grasp on concepts and tools that are mandatory working on a real life RX applications.  
 It is highly recommended to have gone through the excellent [RxJs Koans](https://github.com/Reactive-Extensions/RxJSKoans/) before doing this kata. Speaking ow which, technical pre requisites, installation process for this kata are the same than the ones for RxJs Koans.  
 
 Doing this kata you might learn things on:
