@@ -108,43 +108,6 @@ test('timer: hot or cold?', function() {
 
 })
 
-
-test('multicasting a cold source', function() {
-
-  var scheduler = new Rx.TestScheduler();
-
-  var source = Observable.timer(50, 100, scheduler)
-    .skip(1).take(3);
-
-  var connectableSource = source.publish();
-
-  var mockObserver1 = scheduler.createObserver();
-  scheduler.scheduleAbsolute(null, 10, function () {
-    connectableSource.subscribe(mockObserver1);
-  });
-
-  var mockObserver2 = scheduler.createObserver();
-  scheduler.scheduleAbsolute(null, 200, function () {
-    connectableSource.subscribe(mockObserver2);
-  });
-
-  scheduler.scheduleAbsolute(null, 300, function () {
-    connectableSource.connect();
-  });
-
-  scheduler.start();
-
-  collectionAssert.assertEqual(mockObserver1.messages, [
-    __
-  ]);
-
-  collectionAssert.assertEqual(mockObserver2.messages, [
-    __
-  ]);
-
-})
-
-
 test('multicasting: cold to hot with publish/connect', function() {
 
   var scheduler = new Rx.TestScheduler();
