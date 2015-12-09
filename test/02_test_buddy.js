@@ -75,6 +75,7 @@ test('moving forward, automatic way', function() {
 
   var scheduler = new Rx.TestScheduler();
 
+  // will generate value 1 at 150, 2 at 250 and 3 at 350
   var source = Observable.timer(50, 100, scheduler)
     .skip(1).take(3);
 
