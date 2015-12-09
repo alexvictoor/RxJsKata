@@ -12,5 +12,8 @@ Doing this kata you might learn things on:
 As with RxJs koans, the kata begins with simple exercices with "__" placeholders. These exercices should give you understanding on hot/cold concepts and get you familiar with test scheduler.  
 The second part of this kata is made of 3 more complex exercices. On these exercices, a chunk of code, transforming Rx streams, need to be written in order to get existing unit tests running successfully. 
 
+## Note about Qunit  
+Qunit assertions are used on all exercices. Most of us are used to write first in an assertion the expected value and then the actual value. This is actually what has been done on this kata. Sadly Qunit works the other way around and hence when tests fail you get misleading error messages where actual means expected and... 
+
 
 
