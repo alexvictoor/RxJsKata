@@ -74,7 +74,7 @@ var createActivityStream = function(activity, scheduler) {
       .concat(
         redAfter5sec(scheduler)
       );
-  }).switch()
+  }).switch()  // could use also  flatMapLatest 
   .distinctUntilChanged();
 
   var s = new ReplaySubject(1);
