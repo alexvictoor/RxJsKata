@@ -56,8 +56,8 @@ test('too soon or too late', function () {
   var res = scheduler.startScheduler(function () {
     return xs.map(function (x) { return x; });
   } ,{
-    created: __,     
-    subscribed: __
+    created: __,     // default value is 100
+    subscribed: __   // default value is 200
   });
 
   collectionAssert.assertEqual(res.messages, [
