@@ -54,10 +54,10 @@ test('too soon or too late', function () {
   // Note we'll start at 200 for subscribe, hence missing the 150 mark
   var res = scheduler.startScheduler(function () {
     return xs.map(function (x) { return x; });
-  }/* ,{
-    created: 100,     
-    subscribed: 200
-  }*/);
+  },{
+    created: 50,     
+    subscribed: 60
+  });
 
   collectionAssert.assertEqual(res.messages, [
     onNext(75, "Hello"),
