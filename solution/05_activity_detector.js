@@ -14,7 +14,7 @@ var onNext = Rx.ReactiveTest.onNext,
   subscribe = Rx.ReactiveTest.subscribe;
 
 
-var createActivityStream = function(activity, scheduler) {
+var createActivityStream_first_solution = function(activity, scheduler) {
 
   var activityStream = activity.map(
     function(x) {
@@ -53,6 +53,35 @@ var createActivityStream = function(activity, scheduler) {
     .subscribe(function(x) { s.onNext(x); });
   return s;  
 
+}
+
+
+//
+// another one leveraging on the switch operator
+//
+
+var redAfter5sec = function(scheduler) {
+  return 
+    Observable
+      .just("red")
+      .delay(5000, scheduler);
+}
+
+var createActivityStream = function(activity, scheduler) {
+
+  var stream = activity.map(function(x) {
+    return Observable.just("green")
+      .concat(
+        redAfter5sec(scheduler)
+      );
+  }).switch()
+  .distinctUntilChanged();
+
+  var s = new ReplaySubject(1);
+  redAfter5sec(scheduler).takeUntil(stream).merge(stream)
+    //.tap(function (x) { console.log("final color " + x) })
+    .subscribe(function(x) { s.onNext(x); });
+  return s;  
 }
 
 
