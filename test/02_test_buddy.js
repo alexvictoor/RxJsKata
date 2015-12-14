@@ -56,8 +56,8 @@ test('too soon or too late', function () {
   var res = scheduler.startScheduler(function () {
     return xs.map(function (x) { return x; });
   } ,{
-    created: __,     // default value is 100
-    subscribed: __   // default value is 200
+    created: __,     // virtual time on which to create everything, default value is 100
+    subscribed: __   // virtual time on which to subscribe to the observable, default value is 200
   });
 
   collectionAssert.assertEqual(res.messages, [
