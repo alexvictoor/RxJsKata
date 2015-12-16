@@ -61,8 +61,7 @@ var createActivityStream_first_solution = function(activity, scheduler) {
 //
 
 var redAfter5sec = function(scheduler) {
-  return 
-    Observable
+  return Observable
       .just("red")
       .delay(5000, scheduler);
 }
