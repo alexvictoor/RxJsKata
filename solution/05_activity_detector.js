@@ -50,7 +50,7 @@ var createActivityStream_first_solution = function(activity, scheduler) {
     .delay(5000, scheduler)
     .takeUntil(stream).merge(stream)
     //.tap(function (x) { console.log("final color " + x) })
-    .subscribe(function(x) { s.onNext(x); });
+    .subscribe(s);
   return s;  
 
 }
@@ -79,7 +79,7 @@ var createActivityStream = function(activity, scheduler) {
   var s = new ReplaySubject(1);
   redAfter5sec(scheduler).takeUntil(stream).merge(stream)
     //.tap(function (x) { console.log("final color " + x) })
-    .subscribe(function(x) { s.onNext(x); });
+    .subscribe(s);
   return s;  
 }
 
