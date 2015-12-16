@@ -41,7 +41,7 @@ var createActivityStream_first_solution = function(activity, scheduler) {
         return "red";
       }
     )   //.tap(function (x) { console.log("new color " + x) })
-    .distinctUntilChanged().publish().refCount();
+    .distinctUntilChanged();
 
 
   var s = new ReplaySubject(1);
